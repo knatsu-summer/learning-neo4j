@@ -1,26 +1,21 @@
-package dev.kiyoshi.spring_boot_neo4j.models;
+package dev.kiyoshi.spring_boot_neo4j.object;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
+import dev.kiyoshi.spring_boot_neo4j.models.Lesson;
 
-@Node
-public class Course {
-    @Id @GeneratedValue
-    private Long id;
+
+public class CourseDTO {
     private String identifier;
     private String title;
     private String teacher;
-    @Relationship(type = "BELONGS_TO", direction = Relationship.Direction.INCOMING)
     private List<Lesson> lessons = new ArrayList<>();
 
-    public Course() {
-
+    public CourseDTO(String identifier, String title, String teacher) {
+        this.identifier = identifier;
+        this.title = title;
+        this.teacher = teacher;
     }
 
     public String getIdentifiler() {
@@ -35,6 +30,10 @@ public class Course {
         return teacher;
     }
 
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
     public String setIdentifier(String identifier) {
         return this.identifier = identifier;
     }
@@ -45,7 +44,9 @@ public class Course {
 
     public String setTeacher(String teacher) {
         return this.teacher = teacher;
+    } 
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
-
 }
-
