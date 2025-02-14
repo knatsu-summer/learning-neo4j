@@ -21,7 +21,7 @@ public class Lesson {
         return title;
     }
 
-    public String setIdentifier(String identifiler) {
+    public String setIdentifier(String identifier) {
         return this.identifier = identifier;
     }
 
